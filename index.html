@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>Abhijith ❤️ Amritha</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@300;500&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+font-family:'Cormorant Garamond',serif;
+overflow-x:hidden;
+}
+
+section{
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:30px;
+}
+
+.violet{
+background:url('background.PNG') center/cover;
+color:#f8e7b5;
+}
+
+.cream{
+background:url('cream.jpg') center/cover;
+color:#4b2354;
+}
+
+h1{
+font-family:'Great Vibes',cursive;
+font-size:4rem;
+}
+
+h2{
+font-size:2rem;
+margin-bottom:15px;
+}
+
+p{
+font-size:1.3rem;
+max-width:700px;
+}
+
+.heart{
+width:120px;
+margin:20px 0;
+}
+
+.names{
+font-family:'Great Vibes',cursive;
+font-size:4.5rem;
+line-height:1.2;
+}
+
+.countdown{
+display:flex;
+gap:15px;
+margin-top:25px;
+}
+
+.box{
+padding:15px;
+border:2px solid currentColor;
+min-width:80px;
+}
+
+.location-btn{
+margin-top:25px;
+padding:15px 30px;
+text-decoration:none;
+border:2px solid currentColor;
+color:inherit;
+font-size:1.2rem;
+}
+
+.fade{
+opacity:0;
+transform:translateY(30px);
+transition:1s;
+}
+
+.fade.show{
+opacity:1;
+transform:translateY(0);
+}
+
+</style>
+</head>
+
+<body>
+
+<audio autoplay loop>
+<source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<section class="violet">
+<div class="fade">
+<h2>A NEW CHAPTER BEGINS</h2>
+<p>Join us as we celebrate the engagement of</p>
+</div>
+</section>
+
+<section class="cream">
+
+<div class="fade">
+
+<div class="names">
+Abhijith
+</div>
+
+<img src="heart.png" class="heart">
+
+<div class="names">
+Amritha
+</div>
+
+</div>
+
+</section>
+
+<section class="violet">
+
+<div class="fade">
+
+<h2>Where Our Forever Begins</h2>
+
+<p>
+Two hearts, one promise,
+a lifetime of togetherness.
+</p>
+
+</div>
+
+</section>
+
+<section class="cream">
+
+<div class="fade">
+
+<h2>12 September 2026</h2>
+
+<p>10:30 AM</p>
+
+<br>
+
+<p>Paradise Convention Hall</p>
+
+<a class="location-btn"
+href="https://maps.app.goo.gl/vpH8yXKnEsGDEd7r8?g_st=ic"
+target="_blank">
+
+View Location
+
+</a>
+
+</div>
+
+</section>
+
+<section class="violet">
+
+<div class="fade">
+
+<h2>Countdown To Our Day</h2>
+
+<div class="countdown">
+
+<div class="box">
+<div id="days">0</div>
+Days
+</div>
+
+<div class="box">
+<div id="hours">0</div>
+Hours
+</div>
+
+<div class="box">
+<div id="minutes">0</div>
+Minutes
+</div>
+
+<div class="box">
+<div id="seconds">0</div>
+Seconds
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="cream">
+
+<div class="fade">
+
+<h1>See You There</h1>
+
+<p>
+With love and joy,
+we invite you to celebrate with us.
+</p>
+
+</div>
+
+</section>
+
+<script>
+
+const fades=document.querySelectorAll('.fade');
+
+const observer=new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+entry.target.classList.add('show');
+}
+});
+});
+
+fades.forEach(el=>observer.observe(el));
+
+const countDownDate=new Date("Sep 12, 2026 10:30:00").getTime();
+
+setInterval(()=>{
+
+const now=new Date().getTime();
+
+const distance=countDownDate-now;
+
+document.getElementById("days").innerHTML=Math.floor(distance/(1000*60*60*24));
+
+document.getElementById("hours").innerHTML=Math.floor((distance%(1000*60*60*24))/(1000*60*60));
+
+document.getElementById("minutes").innerHTML=Math.floor((distance%(1000*60*60))/(1000*60));
+
+document.getElementById("seconds").innerHTML=Math.floor((distance%(1000*60))/1000);
+
+},1000);
+
+</script>
+
+</body>
+</html>
