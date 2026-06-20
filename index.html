@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Abhijith & Amritha</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Pinyon+Script&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+overflow:hidden;
+background:#000;
+font-family:'Cormorant Garamond',serif;
+}
+
+.page{
+position:fixed;
+inset:0;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:30px;
+background:url('background.PNG') center center/cover no-repeat;
+transition:1.5s ease;
+}
+
+.page::before{
+content:"";
+position:absolute;
+inset:0;
+background:rgba(0,0,0,.55);
+backdrop-filter:blur(2px);
+}
+
+.page>*{
+position:relative;
+z-index:2;
+}
+
+.hidden{
+opacity:0;
+pointer-events:none;
+transform:scale(1.05);
+}
+
+/* PAGE 1 */
+
+.tagline{
+color:#f3e5ab;
+font-size:2rem;
+letter-spacing:2px;
+margin-bottom:30px;
+animation:fadeUp 2s ease;
+}
+
+.enter-btn{
+padding:14px 34px;
+border:1px solid #f3e5ab;
+background:transparent;
+color:#f3e5ab;
+font-size:1rem;
+letter-spacing:2px;
+border-radius:40px;
+cursor:pointer;
+}
+
+/* PAGE 2 */
+
+.celebrate{
+color:#f3e5ab;
+font-size:2.2rem;
+letter-spacing:2px;
+font-family:'Cormorant Garamond',serif;
+opacity:0;
+animation:fadeUp 2s ease forwards;
+}
+
+.heart-page2{
+position:absolute;
+bottom:18%;
+left:50%;
+transform:translateX(-50%);
+width:65px;
+opacity:0;
+animation:heartAppear 2s ease 1s forwards;
+}
+
+/* PAGE 3 */
+
+.invite{
+max-width:700px;
+color:#f3e5ab;
+padding:20px;
+}
+
+.couple{
+font-family:'Pinyon Script',cursive;
+font-size:3.8rem;
+margin-bottom:30px;
+line-height:1.1;
+}
+
+.details{
+font-family:'Cormorant Garamond',serif;
+font-size:1.5rem;
+line-height:1.9;
+margin-bottom:25px;
+}
+
+.venue{
+font-family:'Cormorant Garamond',serif;
+font-size:1.5rem;
+margin-bottom:25px;
+}
+
+.location-btn{
+display:inline-block;
+margin-bottom:35px;
+padding:12px 28px;
+border:1px solid #f3e5ab;
+border-radius:40px;
+color:#f3e5ab;
+text-decoration:none;
+font-family:'Cormorant Garamond',serif;
+font-size:1rem;
+}
+
+.footer{
+font-family:'Cormorant Garamond',serif;
+font-size:1.2rem;
+margin-bottom:35px;
+}
+
+.countdown{
+font-family:'Cormorant Garamond',serif;
+font-size:1.3rem;
+}
+
+#timer{
+margin-top:12px;
+font-size:1.6rem;
+letter-spacing:2px;
+}
+
+@keyframes fadeUp{
+from{
+opacity:0;
+transform:translateY(30px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+@keyframes heartAppear{
+from{
+opacity:0;
+transform:translateX(-50%) scale(.8);
+}
+to{
+opacity:1;
+transform:translateX(-50%) scale(1);
+}
+}
+
+@media(max-width:768px){
+
+.celebrate{
+font-size:1.8rem;
+}
+
+.couple{
+font-size:3rem;
+}
+
+.details,
+.venue{
+font-size:1.3rem;
+}
+
+.footer{
+font-size:1.1rem;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<audio id="music" loop>
+<source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<!-- PAGE 1 -->
+
+<section id="page1" class="page">
+
+<div class="tagline">
+A Beautiful Moment Awaits
+</div>
+
+<button class="enter-btn" onclick="startInvitation()">
+Step Into Our Story
+</button>
+
+</section>
+
+<!-- PAGE 2 -->
+
+<section id="page2" class="page hidden">
+
+<div class="celebrate">
+Join us as we celebrate
+</div>
+
+<img src="heart.PNG" class="heart-page2">
+
+</section>
+<!-- PAGE 3 -->
+
+<section id="page3" class="page hidden">
+
+<div class="invite">
+
+<div class="couple">
+ABHIJITH & AMRITHA
+</div>
+
+<div class="details">
+12 September 2026 • 10:30 AM
+</div>
+
+<div class="venue">
+Paradise Convention Hall
+</div>
+
+<a
+class="location-btn"
+href="https://maps.app.goo.gl/8pVgrK9qQFFdyAyM7?g_st=ic"
+target="_blank">
+View Location
+</a>
+
+<div class="footer">
+Your presence will make our day even more memorable.
+</div>
+
+<div class="countdown">
+Counting Down To Our Day
+
+<div id="timer"></div>
+
+</div>
+
+</div>
+
+</section>
+
+<script>
+
+function startInvitation(){
+
+const music = document.getElementById("music");
+
+music.currentTime = 6;
+
+music.play().catch(()=>{});
+
+document.getElementById("page1").classList.add("hidden");
+
+document.getElementById("page2").classList.remove("hidden");
+
+/* Page 2 → Page 3 */
+
+setTimeout(()=>{
+
+document.getElementById("page2").classList.add("hidden");
+
+document.getElementById("page3").classList.remove("hidden");
+
+},3000);
+
+}
+
+/* Countdown */
+
+const targetDate =
+new Date("September 12, 2026 10:30:00").getTime();
+
+setInterval(()=>{
+
+const now = new Date().getTime();
+
+const diff = targetDate - now;
+
+const d = Math.floor(diff/(1000*60*60*24));
+
+const h = Math.floor(
+(diff%(1000*60*60*24))/(1000*60*60)
+);
+
+const m = Math.floor(
+(diff%(1000*60*60))/(1000*60)
+);
+
+const s = Math.floor(
+(diff%(1000*60))/1000
+);
+
+document.getElementById("timer").innerHTML =
+`${d}D : ${h}H : ${m}M : ${s}S`;
+
+},1000);
+
+</script>
+
+</body>
+</html>
